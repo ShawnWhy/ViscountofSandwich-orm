@@ -4,13 +4,17 @@ var router = express.Router();
 
 var mysql = require("mysql");
 
+if(process.env.JAWSDB_URL){
+  connection=mysql.createConnection(process.env.JAWSDB_URL);
+}
+else{
 var connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
   user: "root",
   password: "password",
-  database: "burgerLord_db"
-});
+  database: "Burgerlord_db"
+});};
 
 // Import the model (cat.js) to use its database functions.
 var burgers = require("../models/burger.js");
